@@ -1,0 +1,8 @@
+import { useState } from "react";
+import { Mail, Send, MapPin, CheckCircle2 } from "lucide-react";
+
+export default function Contact() {
+  const [sent,setSent]=useState(false); const [form,setForm]=useState({name:"",email:"",subject:"",message:""});
+  const submit=e=>{e.preventDefault();setSent(true);setForm({name:"",email:"",subject:"",message:""});};
+  return <section className="page-section"><div className="container"><div className="page-hero compact"><span className="eyebrow">GET IN TOUCH</span><h1>Let's talk <em>heritage.</em></h1><p>Have feedback, a resource suggestion or a question? Send us a message.</p></div><div className="contact-grid"><div className="contact-info"><div><Mail/><h3>Email</h3><p>hello@heritagehub.demo</p></div><div><MapPin/><h3>Location</h3><p>India</p></div></div><form className="contact-form" onSubmit={submit}>{sent&&<div className="alert success"><CheckCircle2/> Message sent successfully!</div>}<div className="form-two"><label>Name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Your name"/></label><label>Email<input required type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="you@example.com"/></label></div><label>Subject<input required value={form.subject} onChange={e=>setForm({...form,subject:e.target.value})} placeholder="How can we help?"/></label><label>Message<textarea required rows="6" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="Write your message..."/></label><button className="btn btn-primary"><Send size={18}/> Send Message</button></form></div></div></section>;
+}
