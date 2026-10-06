@@ -1,2 +1,4 @@
-echo "node_modules" 
-git rm -r --cached node_modules
+node_modules/
+dist/
+.env
+.env.local
